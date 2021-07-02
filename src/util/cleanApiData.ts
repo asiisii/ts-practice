@@ -1,4 +1,5 @@
 import { MoviesState as MoviesData } from './dataTypes'
+
 // type MoviesData = {
 // 	id: number
 // 	title: string
@@ -20,18 +21,24 @@ type aMovieData = {
 }
 // ~~~ Returns movies data after iterating through all movies data ~~~
 export const cleanAllMoviesData = (moviesData: MoviesData['movies']) => {
-	console.log(moviesData)
 
 	const cleanedMoviesData = moviesData.map(movie => {
-		const moviePoster: string = `/assets/moviePosterImages/${movie.id}.jpeg`
+	const image = new Image()
+
+	image.src = `/assets/moviePosterImages/${movie.id}.jpeg`
+	const moviePoster: string = `/assets/moviePosterImages/${movie.id}.jpeg`
+	const defaultPoster: string = `/assets/moviePosterImages/defaultImage.jpeg`
 		return {
 			id: movie.id,
 			title: movie.title,
 			genres: movie.genres,
-			img: moviePoster,
+			img: image.height ? moviePoster : defaultPoster,
 		}
 	})
+
 	return cleanedMoviesData
 }
+
+
 // ~~~ Returns only necessary data of clicked movie poster ~~~
-export const cleanAMovieData = (amovieData: aMovieData) => {}
+export const cleanAMovieData = (aMovieData: aMovieData) => {}
