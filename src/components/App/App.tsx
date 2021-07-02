@@ -17,6 +17,21 @@ const App: React.FC = () => {
 	const [fetchedError, setFetchedError] = useState<boolean>(false)
 	const [error, setError] = useState<string>('')
 
+	useEffect(() => {
+		const getAllMovies = async () => {
+			setFetchedError(false)
+			try {
+				const response = await fetchAllMoviesData()
+				setStatusCode(response.status)
+				const data = await response.json()
+				const cleanedData = cleanAllMoviesData(data.data)
+				setAllMovies(cleanedData)
+			} catch (error) {
+				setFetchedError(true)
+			}
+		}
+		getAllMovies()
+	}, [])
 
 	console.log(allMovies)
 	return <div className='App'>app</div>
