@@ -8,6 +8,7 @@ interface MoviesState {
 		id: number
 		title: string
 		genres: string[]
+    img: string
 	}[]
 }
 
@@ -17,6 +18,7 @@ const App: React.FC = () => {
 	const [fetchedError, setFetchedError] = useState<boolean>(false)
 	const [error, setError] = useState<string>('')
 
+	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
 	useEffect(() => {
 		const getAllMovies = async () => {
 			setFetchedError(false)
