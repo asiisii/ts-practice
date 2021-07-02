@@ -18,7 +18,7 @@ export const checkForError = (status: number): string => {
 	
 	switch (status) {
 		case 404:
-			errorMsg = "Sorry, we couldn't find repository you were looking for"
+			errorMsg = "Sorry, we couldn't find movies you were looking for"
 			break
 		case 500:
 			errorMsg = 'Internal Server Error. Our whole team are now aware.'
