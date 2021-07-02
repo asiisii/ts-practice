@@ -34,7 +34,7 @@ const App: React.FC = () => {
 	}, [])
 
 	console.log(allMovies)
-	return <div className='App'>app</div>
+	return <div className='App'>{fetchedError && checkForError(statusCode)}</div>
 }
 
 export default App
