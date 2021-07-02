@@ -18,7 +18,7 @@ const App: React.FC = () => {
 	const [allMovies, setAllMovies] = useState<MoviesState['movies']>([])
 	const [statusCode, setStatusCode] = useState<number>(200)
 	const [fetchedError, setFetchedError] = useState<boolean>(false)
-	const [error, setError] = useState<string>('')
+	// const [error, setError] = useState<string>('')
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
   useEffect(() => {
@@ -31,7 +31,9 @@ const App: React.FC = () => {
       const response = await fetchAllMoviesData()
       setStatusCode(response.status)
       const data = await response.json()
-      const cleanedData = cleanAllMoviesData(data.data)
+      // console.log(data);
+      const cleanedData = cleanAllMoviesData(data)
+      // const cleanedData = cleanAllMoviesData(data.data)
       setAllMovies(cleanedData)
     } catch (error) {
       setFetchedError(true)
@@ -39,7 +41,14 @@ const App: React.FC = () => {
   }
 
 	console.log(allMovies)
-	return <div className='App'>{fetchedError && checkForError(statusCode)}</div>
+	return (
+    <div className='App'>
+      {fetchedError && checkForError(statusCode)}
+      {allMovies && allMovies.map(movie => {
+        return <img src={movie.img} />
+      })}
+    </div>
+    )
 }
 
 export default App
