@@ -1,9 +1,10 @@
-type MoviesData = {
-	id: number
-	title: string
-	genres: string[]
-  img: string
-}[]
+import { MoviesState as MoviesData } from './dataTypes'
+// type MoviesData = {
+// 	id: number
+// 	title: string
+// 	genres: string[]
+//   img: string
+// }[]
 
 type aMovieData = {
 	id: string
@@ -18,14 +19,16 @@ type aMovieData = {
 	}[]
 }
 // ~~~ Returns movies data after iterating through all movies data ~~~
-export const cleanAllMoviesData = (moviesData: MoviesData) => {
+export const cleanAllMoviesData = (moviesData: MoviesData['movies']) => {
+	console.log(moviesData)
+
 	const cleanedMoviesData = moviesData.map(movie => {
-    const moviePoster:string = `/assets/moviePosterImages/${movie.id}.jpeg` 
+		const moviePoster: string = `/assets/moviePosterImages/${movie.id}.jpeg`
 		return {
 			id: movie.id,
-      title: movie.title,
-      genres: movie.genres,
-      img: moviePoster
+			title: movie.title,
+			genres: movie.genres,
+			img: moviePoster,
 		}
 	})
 	return cleanedMoviesData
