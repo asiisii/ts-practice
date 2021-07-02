@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { fetchAllMoviesData, checkForError } from '../../util/apiCalls'
 import { cleanAllMoviesData } from '../../util/cleanApiData'
+import { MoviesState } from '../../util/dataTypes'
 import './App.css'
 
-interface MoviesState {
-	movies: {
-		id: number
-		title: string
-		genres: string[]
-    img: string
-	}[]
-}
+// interface MoviesState {
+// 	movies: {
+// 		id: number
+// 		title: string
+// 		genres: string[]
+//     img: string
+// value: number
+// 	}[]
+// }
 
 const App: React.FC = () => {
 	const [allMovies, setAllMovies] = useState<MoviesState['movies']>([])
@@ -19,21 +21,22 @@ const App: React.FC = () => {
 	const [error, setError] = useState<string>('')
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
-	useEffect(() => {
-		const getAllMovies = async () => {
-			setFetchedError(false)
-			try {
-				const response = await fetchAllMoviesData()
-				setStatusCode(response.status)
-				const data = await response.json()
-				const cleanedData = cleanAllMoviesData(data.data)
-				setAllMovies(cleanedData)
-			} catch (error) {
-				setFetchedError(true)
-			}
-		}
-		getAllMovies()
-	}, [])
+  useEffect(() => {
+    getAllMovies()
+  }, [])
+
+  const getAllMovies = async () => {
+    setFetchedError(false)
+    try {
+      const response = await fetchAllMoviesData()
+      setStatusCode(response.status)
+      const data = await response.json()
+      const cleanedData = cleanAllMoviesData(data.data)
+      setAllMovies(cleanedData)
+    } catch (error) {
+      setFetchedError(true)
+    }
+  }
 
 	console.log(allMovies)
 	return <div className='App'>{fetchedError && checkForError(statusCode)}</div>
