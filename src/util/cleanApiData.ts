@@ -4,6 +4,18 @@ type MoviesData = {
 	genres: string[]
 }[]
 
+type aMovieData = {
+	id: string
+	title: string
+	releaseYear: number
+	duration: number
+	genres: string[]
+	descritpion: string
+	topCast: {
+		name: string
+		characterName: string
+	}[]
+}
 
 export const cleanAllMoviesData = (moviesData: MoviesData) => {
 	const cleanedMoviesData = moviesData.map(movie => {
@@ -15,3 +27,5 @@ export const cleanAllMoviesData = (moviesData: MoviesData) => {
 	})
 	return cleanedMoviesData
 }
+
+export const cleanAMovieData = (amovieData: aMovieData) => {}
