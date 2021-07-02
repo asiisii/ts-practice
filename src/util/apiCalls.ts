@@ -1,6 +1,7 @@
 let path: string = 'https://code-challenge.spectrumtoolbox.com/api/movies/'
 let errorMsg: string
 
+// ~~~ Returns response after fetching all the movies data ~~~
 export const fetchAllMoviesData = async () => {
 	const res = await fetch(path, {
 		headers: {
@@ -12,7 +13,7 @@ export const fetchAllMoviesData = async () => {
 	return res
 }
 
-
+// ~~~ Returns error message(string) depending on the status code ~~~
 export const checkForError = (status: number): string => {
 	
 	switch (status) {
