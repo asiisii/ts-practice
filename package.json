@@ -19,8 +19,9 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test --env=jsdom",
-		"eject": "react-scripts eject"
+		"test": "npm start & cypress run",
+		"eject": "react-scripts eject",
+		"cypress": "./node_modules/.bin/cypress open"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -39,5 +40,8 @@
 			"last 1 firefox version",
 			"last 1 safari version"
 		]
+	},
+	"devDependencies": {
+		"cypress": "^7.6.0"
 	}
 }
