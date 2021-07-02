@@ -1,4 +1,4 @@
-let path: string = 'https://code-challenge.spectrumtoolbox.com/api/movie/'
+let path: string = 'https://code-challenge.spectrumtoolbox.com/api/movies/'
 let errorMsg: string
 
 export const fetchAllMoviesData = async () => {
