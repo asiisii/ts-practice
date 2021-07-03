@@ -33,7 +33,7 @@ export const Home: React.FC = () => {
   
 	return (
 		<main>
-			<section>
+			<section className='movies'>
 				{fetchedError && checkForError(statusCode)}
 				{allMovies.length && !fetchedError ? <Movies movies={allMovies}/> : null}
 			</section>
