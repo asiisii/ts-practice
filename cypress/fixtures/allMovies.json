@@ -1,0 +1,55 @@
+[
+	{
+		"id": "SP013727990000",
+		"title": "Riders of Justice",
+		"genres": ["Action", "Thriller", "Dark comedy"]
+	},
+	{
+		"id": "SP015893830000",
+		"title": "616 Wilford Lane",
+		"genres": ["Horror"]
+	},
+	{
+		"id": "SP010286020000",
+		"title": "Locked In",
+		"genres": ["Thriller"]
+	},
+	{
+		"id": "SP013515940000",
+		"title": "Promising Young Woman",
+		"genres": ["Dark comedy", "Thriller"]
+	},
+	{
+		"id": "SP015766610000",
+		"title": "In the Earth",
+		"genres": ["Horror", "Thriller"]
+	},
+	{
+		"id": "SP016282990000",
+		"title": "The Retreat",
+		"genres": ["Thriller"]
+	},
+	{
+		"id": "SP013848680000",
+		"title": "North Hollywood",
+		"genres": ["Comedy drama"]
+	},
+	{
+		"id": "SP016055960000",
+		"title": "The Djinn",
+		"genres": ["Horror", "Thriller"]
+	},
+	{
+		"id": "SP015997800000",
+		"title": "Trigger Point",
+		"genres": ["Thriller", "Action"]
+	},
+	{
+		"id": "SP016010220000",
+		"title": "2149: The Aftermath",
+		"genres": ["Science fiction"]
+	}
+]
+
+
+
