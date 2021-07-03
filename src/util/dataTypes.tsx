@@ -3,6 +3,6 @@ export interface MoviesState {
 		id: number
 		title: string
 		genres: string[]
-		img: string
+		path: string
 	}[]
 }

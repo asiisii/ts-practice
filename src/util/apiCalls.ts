@@ -1,13 +1,14 @@
-let path: string = 'https://code-challenge.spectrumtoolbox.com/api/movies/'
+// let path: string = 'https://code-challenge.spectrumtoolbox.com/api/movies/'
 let errorMsg: string
 
 // ~~~ Returns response after fetching all the movies data ~~~
 export const fetchAllMoviesData = async () => {
 	const res = await fetch('/allMovies.json', {
-		headers: {
-			Authorization: 'Api-Key q3MNxtfep8Gt',
-		},
-	})
+    // const res = await fetch(path, {
+			headers: {
+				Authorization: 'Api-Key q3MNxtfep8Gt',
+			},
+		})
 	// console.log(res.body);
   
 	return res
