@@ -15,6 +15,16 @@ describe('MoviePosters', () => {
 				.should('be.visible')
 		})
 
-    
+		it('should have Riders of Justice title', () => {
+			cy.get('.movie-title')
+				.should('have.length', 10)
+				.should('be.visible')
+				.get('.movie-title')
+				.eq(0)
+				.should('have.text', 'Riders of Justice')
+				.get('.movie-title')
+				.eq(1)
+				.should('have.text', '616 Wilford Lane')
+		})
 	})
 })
