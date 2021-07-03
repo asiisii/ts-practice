@@ -2,24 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { MoviesState } from '../../util/dataTypes'
 import { fetchAllMoviesData, checkForError } from '../../util/apiCalls'
 import { cleanAllMoviesData } from '../../util/cleanApiData'
-
-
-// interface MoviesState {
-// 	movies: {
-// 		id: number
-// 		title: string
-// 		genres: string[]
-// 		img: string
-// 		value: number
-// 	}[]
-// }
-
+import { Movies } from '../Movies/Movies'
 
 export const Home: React.FC = () => {
 	const [allMovies, setAllMovies] = useState<MoviesState['movies']>([])
 	const [statusCode, setStatusCode] = useState<number>(200)
 	const [fetchedError, setFetchedError] = useState<boolean>(false)
-	const [error, setError] = useState<string>('')
+	// const [error, setError] = useState<string>('')
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
 	useEffect(() => {
@@ -40,5 +29,14 @@ export const Home: React.FC = () => {
 			setFetchedError(true)
 		}
 	}
-	return <div>home</div>
+  console.log(allMovies);
+  
+	return (
+		<main>
+			<section>
+				{fetchedError && checkForError(statusCode)}
+				{allMovies.length && !fetchedError ? <Movies movies={allMovies}/> : null}
+			</section>
+		</main>
+	)
 }
