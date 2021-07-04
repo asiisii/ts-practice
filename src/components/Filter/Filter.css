@@ -1,0 +1,42 @@
+.Filter {
+	width: 50%;
+	max-width: 1440px;
+	/* margin: 0 auto; */
+	padding: 0 25px;
+	height: 60px;
+	border-radius: 10px;
+	display: flex;
+	overflow: hidden;
+}
+
+.input-container {
+	flex-grow: 1;
+	display: flex;
+	align-items: center;
+	background-color: #d0e8e9;
+	border-radius: 40px;
+	margin-bottom: 10px;
+}
+
+.input-container input {
+	background-color: transparent;
+	border-top: none;
+	border-right: none;
+	border-left: none;
+	outline: none;
+	color: #86690e;
+	font-size: 20px;
+	margin-left: 20px;
+	width: 400px;
+	transition: width 0.2s ease-in-out;
+}
+
+.input-container input:focus {
+	width: 500px;
+	border-bottom: 5px solid #71c9ce;
+}
+
+.input-container i {
+	font-size: 20px;
+	margin-left: 25px;
+}
