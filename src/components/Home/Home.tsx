@@ -16,13 +16,14 @@ export const Home: React.FC = () => {
 		MoviesState['movies']
 	>([])
 	const [genre, setGenre] = useState('')
-	const [genresMovies, setGenresMovies] = useState<MoviesState['movies']>([])
+	const [filteredByGenres, setFilteredByGenres] = useState<
+		MoviesState['movies']
+	>([])
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
 	useEffect(() => {
 		getAllMovies()
-		filterByGenres()
-	}, [genre])
+	}, [])
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
 	const getAllMovies = async () => {
@@ -53,12 +54,15 @@ export const Home: React.FC = () => {
 		} else {
 			filteredResults = []
 		}
-
 		setFilteredBySearch(filteredResults)
 	}
 
-	const handleGenresOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
+	const handleGenresOptionChange = (
+		e: React.ChangeEvent<HTMLSelectElement>
+	) => {
 		setGenre(e.target.value)
+		filterByGenres(e.target.value)
+	}
 
 	// ~~~ Generates select options for genres ~~~
 	const generateGenresOptions = () => {
@@ -94,12 +98,35 @@ export const Home: React.FC = () => {
 	}
 
 	// ~~~ filters the movie data by genres & assigns data to states ~~~
-	const filterByGenres = () => {
-		const filteredResults = allMovies.filter(movie =>
-			movie.genres.includes(genre)
-		)
+	const filterByGenres = (type: string) => {
+		let filteredResults: MoviesState['movies']
 
-		setGenresMovies(filteredResults)
+		if (genre === 'all') {
+			filteredResults = allMovies
+		} else {
+			filteredResults = allMovies.filter(movie => movie.genres.includes(type))
+			console.log(filteredResults, `genres`)
+		}
+
+		setFilteredByGenres(filteredResults)
+	}
+
+	// ~~~ Returns the proper movie data depending on the condition ~~~
+	const selectMoviesData = () => {
+		if (filteredBySearch.length && !filteredByGenres.length) {
+			return filteredBySearch
+		} else if (!filteredBySearch.length && filteredByGenres.length) {
+			return filteredByGenres
+		} else if (filteredBySearch.length && filteredByGenres.length) {
+			const comboFilteredMovies = filteredBySearch.filter(searchedMovie =>
+				filteredByGenres.filter(
+					selectedGenreMovie => searchedMovie === selectedGenreMovie
+				)
+			)
+			return comboFilteredMovies
+		} else {
+			return allMovies
+		}
 	}
 
 	return (
@@ -112,20 +139,20 @@ export const Home: React.FC = () => {
 			<section className='movies'>
 				<h1>
 					{filteredBySearch.length ||
-					genresMovies.length ||
+					filteredByGenres.length ||
 					error === 'No movies found.'
 						? 'Search Results'
 						: 'All Movies'}
 				</h1>
 				<h3>{error === 'No movies found.' ? error : null}</h3>
 				{fetchedError && checkForError(statusCode)}
-				{(allMovies.length || filteredBySearch.length) && !fetchedError ? (
-					<Movies
-						movies={filteredBySearch.length ? filteredBySearch : allMovies}
-					/>
-				) : (
-					<h1 className='loading'>Loading</h1>
-				)}
+				{(allMovies.length ||
+					filteredBySearch.length ||
+					filteredByGenres.length) &&
+				!fetchedError &&
+				!error ? (
+					<Movies movies={selectMoviesData()} />
+				) : null}
 			</section>
 		</main>
 	)
