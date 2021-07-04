@@ -1,16 +1,18 @@
 .Filter {
-	width: 50%;
+	width: 100%;
 	max-width: 1440px;
-	/* margin: 0 auto; */
+	margin: 20px auto;
 	padding: 0 25px;
 	height: 60px;
 	border-radius: 10px;
 	display: flex;
+	justify-content: space-around;
 	overflow: hidden;
 }
 
 .input-container {
-	flex-grow: 1;
+	/* flex-grow: 1; */
+	width: 600px;
 	display: flex;
 	align-items: center;
 	background-color: #d0e8e9;
