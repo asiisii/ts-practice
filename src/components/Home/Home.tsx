@@ -3,6 +3,7 @@ import { MoviesState } from '../../util/dataTypes'
 import { fetchAllMoviesData, checkForError } from '../../util/apiCalls'
 import { cleanAllMoviesData } from '../../util/cleanApiData'
 import { Movies } from '../Movies/Movies'
+import { Navbar } from '../Navbar/Navbar'
 
 export const Home: React.FC = () => {
 	const [allMovies, setAllMovies] = useState<MoviesState['movies']>([])
@@ -33,6 +34,7 @@ export const Home: React.FC = () => {
   
 	return (
 		<main>
+      <Navbar />
 			<section className='movies'>
 				{fetchedError && checkForError(statusCode)}
 				{allMovies.length && !fetchedError ? <Movies movies={allMovies}/> : null}

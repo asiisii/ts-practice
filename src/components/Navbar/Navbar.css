@@ -1,0 +1,28 @@
+.Navbar {
+	background: #71c9ce;
+	height: 90px;
+	max-width: 1440px;
+	width: 100%;
+}
+
+.logo-title-wrapper {
+	display: flex;
+}
+
+.logo-title-wrapper span {
+	display: flex;
+	align-items: center;
+	font-size: 35px;
+	font-weight: bold;
+	color: #86690f;
+	cursor: default;
+}
+
+.logo-title-wrapper .logo {
+	height: 90px;
+}
+
+.logo-title-wrapper .logo img {
+	height: 100%;
+	border-radius: 50%;
+}
