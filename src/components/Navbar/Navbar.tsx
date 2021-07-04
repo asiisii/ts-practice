@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/logo.png'
+import logo from '../../util/assets/logo.png'
 import './Navbar.css'
 
 // ~~~ This component will display logo and the app title ~~~
