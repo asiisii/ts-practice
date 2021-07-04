@@ -1,15 +1,26 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Filter.css'
-interface FilterProps {}
+interface FilterProps {
+	filterMovies: (query: string) => void
+	generateGenresOptions: () => JSX.Element
+}
 
-export const Filter: React.FC<FilterProps> = () => {
+export const Filter: React.FC<FilterProps> = ({
+	filterMovies,
+	generateGenresOptions,
+}) => {
 	const [searchText, setSearchText] = useState('')
+
+	useEffect(() => {
+		filterMovies(searchText)
+	}, [searchText])
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault()
-		setSearchText(e.target.value)
+		let query = e.target.value.toLowerCase()
+		setSearchText(query)
 	}
-  
+
 	return (
 		<section className='Filter'>
 			<div className='input-container'>
@@ -23,6 +34,7 @@ export const Filter: React.FC<FilterProps> = () => {
 					onChange={e => handleChange(e)}
 				/>
 			</div>
+			{generateGenresOptions()}
 		</section>
 	)
 }
