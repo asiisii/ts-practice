@@ -4,6 +4,7 @@ import { fetchAllMoviesData, checkForError } from '../../util/apiCalls'
 import { cleanAllMoviesData } from '../../util/cleanApiData'
 import { Movies } from '../Movies/Movies'
 import { Navbar } from '../Navbar/Navbar'
+import { Filter } from '../Filter/Filter'
 
 export const Home: React.FC = () => {
 	const [allMovies, setAllMovies] = useState<MoviesState['movies']>([])
@@ -35,6 +36,7 @@ export const Home: React.FC = () => {
 	return (
 		<main>
       <Navbar />
+      <Filter />
 			<section className='movies'>
 				{fetchedError && checkForError(statusCode)}
 				{allMovies.length && !fetchedError ? <Movies movies={allMovies}/> : null}
