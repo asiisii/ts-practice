@@ -16,7 +16,6 @@ type aMovieData = {
 //~~~ Returns movies data after iterating through all movies data ~~~
 export const cleanAllMoviesData = (moviesData: MoviesData['movies']) => {
 	const cleanedMoviesData = moviesData.map(movie => {
-		const image = new Image()
 		const header = tryRequire(`./assets/moviePosterImages/${movie.id}.jpeg`)
 			? true
 			: false
