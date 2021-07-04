@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './Filter.css'
 interface FilterProps {
 	filterMovies: (query: string) => void
@@ -11,14 +11,11 @@ export const Filter: React.FC<FilterProps> = ({
 }) => {
 	const [searchText, setSearchText] = useState('')
 
-	useEffect(() => {
-		filterMovies(searchText)
-	}, [searchText])
-
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault()
 		let query = e.target.value.toLowerCase()
 		setSearchText(query)
+		filterMovies(query)
 	}
 
 	return (
