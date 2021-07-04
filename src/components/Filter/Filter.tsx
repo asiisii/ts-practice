@@ -9,17 +9,20 @@ export const Filter: React.FC<FilterProps> = () => {
 		e.preventDefault()
 		setSearchText(e.target.value)
 	}
-
+  
 	return (
 		<section className='Filter'>
-			<input
-				type='search'
-				name='search'
-				autoComplete='off'
-				placeholder='Search...'
-				value={searchText}
-				onChange={e => handleChange(e)}
-			/>
+			<div className='input-container'>
+				<i className='fas fa-search'></i>
+				<input
+					type='search'
+					name='search'
+					autoComplete='off'
+					placeholder='Search...'
+					value={searchText}
+					onChange={e => handleChange(e)}
+				/>
+			</div>
 		</section>
 	)
 }
