@@ -25,38 +25,24 @@ export const Home: React.FC = () => {
 	}, [genre])
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
-	const filterByGenres = () => {
-    console.log(`genre picked`);
-    
-		const filteredResults = allMovies.filter(movie =>
-			movie.genres.includes(genre)
-		)
-		setGenresMovies(filteredResults)
-	}
-
 	const getAllMovies = async () => {
 		setFetchedError(false)
 		try {
 			const response = await fetchAllMoviesData()
 			setStatusCode(response.status)
 			const data = await response.json()
-			// console.log(data);
 			const cleanedData = cleanAllMoviesData(data)
-			// console.log(cleanedData)
 			setAllMovies(cleanedData)
 		} catch (error) {
 			setFetchedError(true)
 		}
 	}
 
+	// ~~~ filters the movie data by searched query & assigns data to states ~~~
 	const filterMovies = (query: string) => {
-		console.log(query)
 		setError('')
 		let filteredResults: MoviesState['movies']
-		// if (genres && filteredBySearch.length) {
-		//   filteredBySearch
-		// }
-		// const a = filteredBySearch.length ? filteredBySearch : allMovies
+
 		if (query) {
 			filteredResults = allMovies.filter(movie =>
 				movie.title.toLowerCase().includes(query)
@@ -74,6 +60,7 @@ export const Home: React.FC = () => {
 	const handleGenresOptionChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
 		setGenre(e.target.value)
 
+	// ~~~ Generates select options for genres ~~~
 	const generateGenresOptions = () => {
 		let genresList: string[] = []
 		allMovies.forEach(movie =>
@@ -83,7 +70,6 @@ export const Home: React.FC = () => {
 				}
 			})
 		)
-
 		return (
 			<select
 				className='options'
@@ -98,17 +84,22 @@ export const Home: React.FC = () => {
 				</option>
 				{genresList.map((genre, i) => {
 					return (
-						<option
-							className='select-items'
-							key={i}
-							value={genre.toLowerCase()}
-						>
+						<option className='select-items' key={i} value={genre}>
 							{genre}
 						</option>
 					)
 				})}
 			</select>
 		)
+	}
+
+	// ~~~ filters the movie data by genres & assigns data to states ~~~
+	const filterByGenres = () => {
+		const filteredResults = allMovies.filter(movie =>
+			movie.genres.includes(genre)
+		)
+
+		setGenresMovies(filteredResults)
 	}
 
 	return (
@@ -120,7 +111,9 @@ export const Home: React.FC = () => {
 			/>
 			<section className='movies'>
 				<h1>
-					{filteredBySearch.length || error === 'No movies found.'
+					{filteredBySearch.length ||
+					genresMovies.length ||
+					error === 'No movies found.'
 						? 'Search Results'
 						: 'All Movies'}
 				</h1>
