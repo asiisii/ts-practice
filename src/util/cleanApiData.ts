@@ -1,9 +1,9 @@
-import { MoviesState as MoviesData, AMovieApiData } from './dataTypes'
+import { MoviesState as MoviesData, AMovieApiData, Chars } from './dataTypes'
 
 //~~~ Returns movies data after iterating through all movies data ~~~
 export const cleanAllMoviesData = (moviesData: MoviesData['movies']) => {
 	const cleanedMoviesData = moviesData.map(movie => {
-		const header = tryRequire(`./assets/moviePosterImages/${movie.id}.jpeg`)
+		const file = tryRequire(`./assets/moviePosterImages/${movie.id}.jpeg`)
 			? true
 			: false
 
@@ -14,7 +14,7 @@ export const cleanAllMoviesData = (moviesData: MoviesData['movies']) => {
 			id: movie.id,
 			title: movie.title,
 			genres: movie.genres,
-			path: header ? moviePoster : defaultPoster,
+			path: file ? moviePoster : defaultPoster,
 		}
 	})
 
@@ -32,9 +32,21 @@ const tryRequire = (path: string) => {
 
 // ~~~ Returns only necessary data of clicked movie poster ~~~
 export const cleanAMovieData = (aMovieData: AMovieApiData) => {
+	const heroPath = tryRequire(`./assets/movieHeroImages/${aMovieData.id}.jpeg`)
+		? true
+		: false
+	const posterPath = tryRequire(
+		`./assets/moviePosterImages/${aMovieData.id}.jpeg`
+	)
+		? true
+		: false
 	const movieGenres = aMovieData.genres.join(' | ')
 	const displayDuration = formateSecsToTime(aMovieData.duration)
-
+	const movieHero: string = `/assets/movieHeroImages/${aMovieData.id}.jpeg`
+	const defaultHero: string = `/assets/movieHeroImages/defaultImage.jpeg`
+	const moviePoster: string = `/assets/moviePosterImages/${aMovieData.id}.jpeg`
+	const defaultPoster: string = `/assets/moviePosterImages/defaultImage.jpeg`
+	const topCastNamnes = formateTopCast(aMovieData.topCast)
 	return {
 		id: aMovieData.id,
 		title: aMovieData.title,
@@ -42,7 +54,9 @@ export const cleanAMovieData = (aMovieData: AMovieApiData) => {
 		duration: displayDuration,
 		genres: movieGenres,
 		description: aMovieData.description,
-		topCast: aMovieData.topCast,
+		topCast: topCastNamnes,
+		heroPath: heroPath ? movieHero : defaultHero,
+		posterPath: posterPath ? moviePoster : defaultPoster,
 	}
 }
 
@@ -58,4 +72,11 @@ const formateSecsToTime = (seconds: number) => {
 		(sec > 0 ? ':' + sec + (sec === 1 ? 'sec' : 'secs') : '') || (sec < 1 && '')
 
 	return `${formattedHr}${formattedMin}${formattedSec}`
+}
+
+// ~~~ Converts seconds arguments to hh:mm:ss format
+const formateTopCast = (chars: Chars) => {
+	console.log(chars)
+	const names = chars.map(char => char.name)
+	return names.join(' | ')
 }
