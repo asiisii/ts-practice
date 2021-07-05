@@ -86,4 +86,11 @@ describe('Filter', () => {
 			.should('have.length', 7)
 			.should('be.visible')
 	})
+
+	it('should display no movies found if no match found', () => {
+		cy.get('input[name="search"]')
+			.type('asd')
+			.get('h2')
+			.should('have.text', 'No movies found.')
+	})
 })
