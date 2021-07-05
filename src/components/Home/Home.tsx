@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MoviesState } from '../../util/dataTypes'
-import { fetchAllMoviesData, checkForError } from '../../util/apiCalls'
+import { fetchMovieData, checkForError } from '../../util/apiCalls'
 import { cleanAllMoviesData } from '../../util/cleanApiData'
 import { Movies } from '../Movies/Movies'
 import { Navbar } from '../Navbar/Navbar'
@@ -31,7 +31,7 @@ export const Home: React.FC = () => {
 	const getAllMovies = async () => {
 		setFetchedError(false)
 		try {
-			const response = await fetchAllMoviesData('/')
+			const response = await fetchMovieData('/')
 			setStatusCode(response.status)
 			const data = await response.json()
 			const cleanedData = cleanAllMoviesData(data.data)
