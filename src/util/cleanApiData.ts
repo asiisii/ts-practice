@@ -74,7 +74,7 @@ const formateSecsToTime = (seconds: number) => {
 	return `${formattedHr}${formattedMin}${formattedSec}`
 }
 
-// ~~~ Converts seconds arguments to hh:mm:ss format
+// ~~~ Converts top cast array to string format
 const formateTopCast = (chars: Chars) => {
 	console.log(chars)
 	const names = chars.map(char => char.name)

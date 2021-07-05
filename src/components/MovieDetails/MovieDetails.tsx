@@ -4,6 +4,7 @@ import { fetchMovieData, checkForError } from '../../util/apiCalls'
 import { cleanAMovieData } from '../../util/cleanApiData'
 import { AMovieState, MovieDetailsProps } from '../../util/dataTypes'
 
+// ~~~ Displays the movie details ~~~
 export const MovieDetails: React.FC = () => {
 	const params = useParams<MovieDetailsProps>()
 	const [aMovie, setAMovie] = useState<AMovieState>()
@@ -14,6 +15,7 @@ export const MovieDetails: React.FC = () => {
 		getSingleMovieDetails()
 	}, [params.id])
 
+	// ~~~ Fetches the movie details data and assigns it to the state ~~~
 	const getSingleMovieDetails = async () => {
 		setFetchedError(false)
 		try {
@@ -26,8 +28,6 @@ export const MovieDetails: React.FC = () => {
 			setFetchedError(true)
 		}
 	}
-
-	console.log(aMovie)
 
 	return (
 		<section className='MovieDetails'>
