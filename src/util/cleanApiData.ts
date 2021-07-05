@@ -34,18 +34,7 @@ const tryRequire = (path: string) => {
 export const cleanAMovieData = (aMovieData: AMovieApiData) => {
 	console.log(aMovieData)
 	const movieGenres = aMovieData.genres.join(' | ')
-	const time = new Date(aMovieData.duration * 1000).toISOString().substr(11, 8)
-	console.log(time)
-	const givenSecs = aMovieData.duration
-	var hr = Math.floor(givenSecs / 3600)
-	var min = Math.floor((givenSecs % 3600) / 60)
-	var sec = Math.floor((givenSecs % 3600) % 60)
-
-	var formattedHr = hr > 0 ? hr + (hr === 1 ? 'hr' : 'hrs') : ''
-	let formattedMin = min > 0 ? ':' + min + (min === 1 ? 'min' : 'mins') : ''
-	var formattedSec =
-		(sec > 0 ? ':' + sec + (sec === 1 ? 'sec' : 'secs') : '') || (sec < 1 && '')
-	const displayDuration = `${formattedHr}${formattedMin}${formattedSec}`
+	const displayDuration = formateSecsToTime(aMovieData.duration)
 
 	return {
 		id: aMovieData.id,
@@ -56,4 +45,18 @@ export const cleanAMovieData = (aMovieData: AMovieApiData) => {
 		description: aMovieData.description,
 		topCast: aMovieData.topCast,
 	}
+}
+
+// ~~~ Converts seconds arguments to hh:mm:ss format
+const formateSecsToTime = (seconds: number) => {
+	const givenSecs = seconds
+	const hr = Math.floor(givenSecs / 3600)
+	const min = Math.floor((givenSecs % 3600) / 60)
+	const sec = Math.floor((givenSecs % 3600) % 60)
+
+	const formattedHr = hr > 0 ? hr + (hr === 1 ? 'hr' : 'hrs') : ''
+	const formattedMin = min > 0 ? ':' + min + (min === 1 ? 'min' : 'mins') : ''
+	const formattedSec =
+		(sec > 0 ? ':' + sec + (sec === 1 ? 'sec' : 'secs') : '') || (sec < 1 && '')
+	return `${formattedHr}${formattedMin}${formattedSec}`
 }
