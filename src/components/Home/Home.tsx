@@ -12,6 +12,7 @@ export const Home: React.FC = () => {
 	const [statusCode, setStatusCode] = useState<number>(200)
 	const [fetchedError, setFetchedError] = useState<boolean>(false)
 	const [error, setError] = useState<string>('')
+	const [searchText, setSearchText] = useState('')
 	const [filteredBySearch, setFilteredBySearch] = useState<
 		MoviesState['movies']
 	>([])
@@ -42,18 +43,33 @@ export const Home: React.FC = () => {
 	// ~~~ filters the movie data by searched query & assigns data to states ~~~
 	const filterMovies = (query: string) => {
 		setError('')
-		let filteredResults: MoviesState['movies']
+		selectMoviesData()
+		let filteredResults: MoviesState['movies'] = []
 
 		if (query) {
-			filteredResults = allMovies.filter(movie =>
-				movie.title.toLowerCase().includes(query)
-			)
-			if (!filteredResults.length) {
-				setError('No movies found.')
+			if (!genre) {
+				filteredResults = allMovies.filter(movie =>
+					movie.title.toLowerCase().includes(query)
+				)
+			} else {
+				if (genre === 'All') {
+					filteredResults = allMovies.filter(movie => {
+						return movie.title.toLowerCase().includes(query)
+					})
+				} else {
+					filteredResults = allMovies.filter(
+						movie =>
+							movie.title.toLowerCase().includes(query) &&
+							movie.genres.includes(genre)
+					)
+				}
 			}
-		} else {
-			filteredResults = []
 		}
+
+		if (!filteredResults.length && query) {
+			setError('No movies found.')
+		}
+
 		setFilteredBySearch(filteredResults)
 	}
 
@@ -74,6 +90,7 @@ export const Home: React.FC = () => {
 				}
 			})
 		)
+		genresList.unshift(`All`)
 		return (
 			<select
 				className='options'
@@ -81,10 +98,7 @@ export const Home: React.FC = () => {
 				onChange={e => handleGenresOptionChange(e)}
 			>
 				<option value='' disabled>
-					Select language
-				</option>
-				<option className='select-items' value='all'>
-					All
+					Select Genre
 				</option>
 				{genresList.map((genre, i) => {
 					return (
@@ -99,13 +113,23 @@ export const Home: React.FC = () => {
 
 	// ~~~ filters the movie data by genres & assigns data to states ~~~
 	const filterByGenres = (type: string) => {
-		let filteredResults: MoviesState['movies']
-
-		if (genre === 'all') {
+		let filteredResults: MoviesState['movies'] = []
+		setError('')
+		if (!searchText && type === 'All') {
 			filteredResults = allMovies
-		} else {
+		}
+		if (!searchText && type !== 'All') {
 			filteredResults = allMovies.filter(movie => movie.genres.includes(type))
-			console.log(filteredResults, `genres`)
+		} else if (searchText && type !== 'All') {
+			filteredResults = allMovies.filter(
+				movie =>
+					movie.genres.includes(type) &&
+					movie.title.toLowerCase().includes(searchText)
+			)
+		}
+
+		if (!filteredResults.length) {
+			setError('No movies found.')
 		}
 
 		setFilteredByGenres(filteredResults)
@@ -113,27 +137,49 @@ export const Home: React.FC = () => {
 
 	// ~~~ Returns the proper movie data depending on the condition ~~~
 	const selectMoviesData = () => {
-		if (filteredBySearch.length && !filteredByGenres.length) {
-			return filteredBySearch
-		} else if (!filteredBySearch.length && filteredByGenres.length) {
-			return filteredByGenres
-		} else if (filteredBySearch.length && filteredByGenres.length) {
-			const comboFilteredMovies = filteredBySearch.filter(searchedMovie =>
-				filteredByGenres.filter(
-					selectedGenreMovie => searchedMovie === selectedGenreMovie
-				)
+		if (searchText && genre && genre !== 'All') {
+			let comboFilteredMovies = allMovies.reduce(
+				(arr: MoviesState['movies'], movie) => {
+					if (
+						movie.genres.includes(genre) &&
+						!arr.includes(movie) &&
+						movie.title.toLowerCase().includes(searchText)
+					) {
+						arr.push(movie)
+					}
+
+					return arr
+				},
+				[]
 			)
 			return comboFilteredMovies
+		} else if (!searchText && genre && genre !== 'All') {
+			let genreResults = allMovies.filter(movie => movie.genres.includes(genre))
+			return genreResults
+		} else if (searchText && genre === 'All') {
+			return allMovies.filter(movie =>
+				movie.title.toLowerCase().includes(searchText)
+			)
+		} else if (searchText && !genre) {
+			return filteredBySearch
 		} else {
 			return allMovies
 		}
+	}
+
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		e.preventDefault()
+		let query = e.target.value.toLowerCase()
+		setSearchText(query)
+		filterMovies(query)
 	}
 
 	return (
 		<main>
 			<Navbar />
 			<Filter
-				filterMovies={filterMovies}
+				searchText={searchText}
+				handleChange={handleChange}
 				generateGenresOptions={generateGenresOptions}
 			/>
 			<section className='movies'>
