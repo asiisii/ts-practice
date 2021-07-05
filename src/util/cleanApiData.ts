@@ -34,6 +34,12 @@ const tryRequire = (path: string) => {
 export const cleanAMovieData = (aMovieData: AMovieData['movie']) => {
   console.log(aMovieData);
   return {
-    title: aMovieData.title
-  }
+		id: aMovieData.id,
+		title: aMovieData.title,
+		releaseYear: aMovieData.releaseYear,
+		duration: aMovieData.duration,
+		genres: aMovieData.genres,
+		description: aMovieData.description,
+		topCast: aMovieData.topCast,
+	}
 }
