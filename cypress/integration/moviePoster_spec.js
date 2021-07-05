@@ -15,6 +15,27 @@ describe('MoviePosters', () => {
 				.should('be.visible')
 		})
 
+		it('should display two default image', () => {
+			cy.get('img')
+				.should('have.length', '11')
+				.eq(2)
+				.should('have.attr', 'src')
+				.should('equal', '/assets/moviePosterImages/defaultImage.jpeg')
+				.get('img')
+				.eq(2)
+				.should('have.attr', 'alt')
+				.should('include', '616 Wilford Lane')
+				.get('img')
+				.should('have.length', '11')
+				.eq(6)
+				.should('have.attr', 'src')
+				.should('equal', '/assets/moviePosterImages/defaultImage.jpeg')
+				.get('img')
+				.eq(6)
+				.should('have.attr', 'alt')
+				.should('include', 'The Retreat')
+		})
+
 		it('should have Riders of Justice title', () => {
 			cy.get('.movie-title')
 				.should('have.length', 10)

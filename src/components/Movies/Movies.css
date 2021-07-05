@@ -1,0 +1,31 @@
+.Movies {
+	display: grid;
+	grid-gap: 40px;
+	grid-template-columns: repeat(4, 1fr);
+}
+
+.MoviePoster {
+	background: #ffffff;
+	border-radius: 10px;
+	cursor: default;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	color: #71c9ce;
+	padding: 15px;
+	position: relative;
+	transition: all 0.2s ease;
+}
+
+.MoviePoster:hover {
+	box-shadow: 0 23px 23px 0 rgb(113, 200, 205, 0.5),
+		0 23px 23px 0 rgba(0, 0, 0, 0.5);
+	transform: scale(1.01);
+	z-index: 1;
+}
+
+.MoviePoster a {
+	text-decoration: none;
+	text-align: center;
+	color: #86690f;
+}

@@ -1,8 +1,12 @@
 .Navbar {
 	background: #71c9ce;
+}
+
+.logo-title-wrapper {
+	background: #71c9ce;
 	height: 90px;
-	max-width: 1440px;
-	width: 100%;
+	max-width: 1350px;
+	margin: 0 auto;
 }
 
 .logo-title-wrapper {
@@ -14,7 +18,7 @@
 	align-items: center;
 	font-size: 35px;
 	font-weight: bold;
-	color: #86690f;
+	color: #5c480a;
 	cursor: default;
 }
 
