@@ -32,7 +32,6 @@ const tryRequire = (path: string) => {
 
 // ~~~ Returns only necessary data of clicked movie poster ~~~
 export const cleanAMovieData = (aMovieData: AMovieApiData) => {
-	console.log(aMovieData)
 	const movieGenres = aMovieData.genres.join(' | ')
 	const displayDuration = formateSecsToTime(aMovieData.duration)
 
@@ -49,14 +48,14 @@ export const cleanAMovieData = (aMovieData: AMovieApiData) => {
 
 // ~~~ Converts seconds arguments to hh:mm:ss format
 const formateSecsToTime = (seconds: number) => {
-	const givenSecs = seconds
-	const hr = Math.floor(givenSecs / 3600)
-	const min = Math.floor((givenSecs % 3600) / 60)
-	const sec = Math.floor((givenSecs % 3600) % 60)
+	const hr = Math.floor(seconds / 3600)
+	const min = Math.floor((seconds % 3600) / 60)
+	const sec = Math.floor((seconds % 3600) % 60)
 
 	const formattedHr = hr > 0 ? hr + (hr === 1 ? 'hr' : 'hrs') : ''
 	const formattedMin = min > 0 ? ':' + min + (min === 1 ? 'min' : 'mins') : ''
 	const formattedSec =
 		(sec > 0 ? ':' + sec + (sec === 1 ? 'sec' : 'secs') : '') || (sec < 1 && '')
+
 	return `${formattedHr}${formattedMin}${formattedSec}`
 }
