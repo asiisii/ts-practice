@@ -6,3 +6,18 @@ export interface MoviesState {
 		path: string
 	}[]
 }
+
+export interface AMovieData {
+	movie: {
+		id: string
+		title: string
+		releaseYear: number
+		duration: number
+		genres: string[]
+		descritpion: string
+		topCast: {
+			name: string
+			characterName: string
+		}[]
+	}
+}
