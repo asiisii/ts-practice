@@ -1,17 +1,4 @@
-import { MoviesState as MoviesData } from './dataTypes'
-
-type aMovieData = {
-	id: string
-	title: string
-	releaseYear: number
-	duration: number
-	genres: string[]
-	descritpion: string
-	topCast: {
-		name: string
-		characterName: string
-	}[]
-}
+import { MoviesState as MoviesData, AMovieData } from './dataTypes'
 
 //~~~ Returns movies data after iterating through all movies data ~~~
 export const cleanAllMoviesData = (moviesData: MoviesData['movies']) => {
@@ -44,4 +31,9 @@ const tryRequire = (path: string) => {
 }
 
 // ~~~ Returns only necessary data of clicked movie poster ~~~
-export const cleanAMovieData = (aMovieData: aMovieData) => {}
+export const cleanAMovieData = (aMovieData: AMovieData['movie']) => {
+  console.log(aMovieData);
+  return {
+    title: aMovieData.title
+  }
+}
