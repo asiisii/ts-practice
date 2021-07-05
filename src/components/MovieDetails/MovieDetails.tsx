@@ -26,5 +26,35 @@ export const MovieDetails: React.FC = () => {
 			setFetchedError(true)
 		}
 	}
-	return <div>hello</div>
+
+	console.log(aMovie)
+
+	return (
+		<section className='MovieDetails'>
+			{fetchedError && <h1>{checkForError(statusCode)}</h1>}
+			{!aMovie && !fetchedError && <h1>Loading</h1>}
+			{aMovie && (
+				<>
+					<article className='left'>
+						<div>
+							<img src={aMovie.posterPath} alt={`${aMovie.title} poster img`} />
+						</div>
+						<div>
+							<h1>{aMovie.title}</h1>
+							<h2>{aMovie.releaseYear}</h2>
+							<h2>{aMovie.duration}</h2>
+							<h3>{aMovie.genres}</h3>
+							<br />
+							<p>{aMovie.description}</p>
+							<h3>Top Cast</h3>
+							<p>{aMovie.topCast}</p>
+						</div>
+					</article>
+					<div className='right'>
+						<img src={aMovie.heroPath} alt={`${aMovie.title} hero img`} />
+					</div>
+				</>
+			)}
+		</section>
+	)
 }
