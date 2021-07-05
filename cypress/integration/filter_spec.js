@@ -28,7 +28,7 @@ describe('Filter', () => {
 			.should('be.visible')
 	})
 
-	it.only('should display all the movies when search has no value', () => {
+	it('should display all the movies when search has no value', () => {
 		cy.get('input[name="search"]')
 			.type('Riders')
 			.should('have.value', 'riders')
@@ -42,6 +42,21 @@ describe('Filter', () => {
 			.get('.movies')
 			.find('.MoviePoster')
 			.should('have.length', 10)
+			.should('be.visible')
+	})
+
+	it.only('should be able to filter by genre', () => {
+		cy.get('select')
+			.select('All')
+			.get('.movies')
+			.find('.MoviePoster')
+			.should('have.length', 10)
+			.should('be.visible')
+			.get('select')
+			.select('Action')
+			.get('.movies')
+			.find('.MoviePoster')
+			.should('have.length', 2)
 			.should('be.visible')
 	})
 })
