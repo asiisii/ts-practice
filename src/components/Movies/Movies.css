@@ -1,7 +1,6 @@
 .Movies {
 	display: grid;
 	grid-gap: 40px;
-	/* flex-grow: 1; */
 	grid-template-columns: repeat(4, 1fr);
 }
 
