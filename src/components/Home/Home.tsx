@@ -191,7 +191,7 @@ export const Home: React.FC = () => {
 						? 'Search Results'
 						: 'All Movies'}
 				</h1>
-				<h3>{error === 'No movies found.' ? error : null}</h3>
+				<h2>{error === 'No movies found.' ? error : null}</h2>
 				{fetchedError && checkForError(statusCode)}
 				{(allMovies.length ||
 					filteredBySearch.length ||
