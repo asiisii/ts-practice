@@ -1,6 +1,7 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { Home } from '../Home/Home'
+import { MovieDetails } from '../MovieDetails/MovieDetails'
 import './App.css'
 
 const App: React.FC = () => {
@@ -8,12 +9,7 @@ const App: React.FC = () => {
 		<div className='App'>
 			<Switch>
 				<Route exact path='/' component={Home} />
-				<Route
-					path='/:id'
-					render={({ match }) => {
-						return <MovieDetails id={match.params.id} />
-					}}
-				/>
+				<Route path='/:id' component={MovieDetails} />
 			</Switch>
 		</div>
 	)
