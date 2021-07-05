@@ -27,12 +27,16 @@ export interface AMovieState {
 	duration: string
 	genres: string
 	description: string
-	topCast: {
-		name: string
-		characterName: string
-	}[]
+	topCast: string
+	heroPath: string
+	posterPath: string
 }
 
 export interface MovieDetailsProps {
 	id: string
 }
+
+export type Chars = {
+	name: string
+	characterName: string
+}[]
