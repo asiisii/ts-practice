@@ -93,22 +93,22 @@ export const Home: React.FC = () => {
 		)
 		genresList.unshift(`All`)
 		return (
-			<select
-				className='options'
-				defaultValue=''
-				onChange={e => handleGenresOptionChange(e)}
-			>
-				<option value='' disabled>
-					Select Genre
-				</option>
-				{genresList.map((genre, i) => {
-					return (
-						<option className='select-items' key={i} value={genre}>
-							{genre}
-						</option>
-					)
-				})}
-			</select>
+			<section className='genre-select'>
+				<p>Browse by Genre</p>
+				<select
+					className='options'
+					defaultValue=''
+					onChange={e => handleGenresOptionChange(e)}
+				>
+					{genresList.map((genre, i) => {
+						return (
+							<option className='select-items' key={i} value={genre}>
+								{genre}
+							</option>
+						)
+					})}
+				</select>
+			</section>
 		)
 	}
 
@@ -116,6 +116,11 @@ export const Home: React.FC = () => {
 	const filterByGenres = (type: string) => {
 		let filteredResults: MoviesState['movies'] = []
 		setError('')
+		if (searchText && type === 'All') {
+			filteredResults = allMovies.filter(movie =>
+				movie.title.includes(searchText)
+			)
+		}
 		if (!searchText && type === 'All') {
 			filteredResults = allMovies
 		}
