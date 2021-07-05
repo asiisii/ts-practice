@@ -5,6 +5,7 @@ select {
 	margin-bottom: 10px;
 	width: 200px;
 	padding: 15px;
+	cursor: pointer;
 }
 
 .movies {
@@ -21,5 +22,6 @@ select {
 }
 
 h1 {
-  color : #5c480a
+	color: #5c480a;
+	cursor: default;
 }
