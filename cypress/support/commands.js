@@ -1,10 +1,10 @@
-const baseURL = 'https://code-challenge.spectrumtoolbox.com/api/movies/'
+const baseURL = 'https://code-challenge.spectrumtoolbox.com/api/movies'
+
 Cypress.Commands.add('interceptAllMoviesFetches', () => {
 	cy.intercept(
 		{
 			method: 'GET',
-			url: '/allMovies.json',
-			// hostname: 'localhost',
+			url: `${baseURL}`,
 			headers: {
 				Authorization: 'Api-Key q3MNxtfep8Gt',
 			},
