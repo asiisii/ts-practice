@@ -14,7 +14,7 @@ export interface AMovieData {
 		releaseYear: number
 		duration: number
 		genres: string[]
-		descritpion: string
+		description: string
 		topCast: {
 			name: string
 			characterName: string
