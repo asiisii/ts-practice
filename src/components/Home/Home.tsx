@@ -34,7 +34,7 @@ export const Home: React.FC = () => {
 			const response = await fetchAllMoviesData()
 			setStatusCode(response.status)
 			const data = await response.json()
-			const cleanedData = cleanAllMoviesData(data)
+			const cleanedData = cleanAllMoviesData(data.data)
 			setAllMovies(cleanedData)
 		} catch (error) {
 			setFetchedError(true)
