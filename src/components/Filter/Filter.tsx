@@ -1,23 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './Filter.css'
 interface FilterProps {
-	filterMovies: (query: string) => void
+	searchText: string
+	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
 	generateGenresOptions: () => JSX.Element
 }
 
 export const Filter: React.FC<FilterProps> = ({
-	filterMovies,
+	searchText,
+	handleChange,
 	generateGenresOptions,
 }) => {
-	const [searchText, setSearchText] = useState('')
-
-	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		e.preventDefault()
-		let query = e.target.value.toLowerCase()
-		setSearchText(query)
-		filterMovies(query)
-	}
-
 	return (
 		<section className='Filter'>
 			<div className='input-container'>
