@@ -8,6 +8,12 @@ const App: React.FC = () => {
 		<div className='App'>
 			<Switch>
 				<Route exact path='/' component={Home} />
+				<Route
+					path='/:id'
+					render={({ match }) => {
+						return <MovieDetails id={match.params.id} />
+					}}
+				/>
 			</Switch>
 		</div>
 	)
