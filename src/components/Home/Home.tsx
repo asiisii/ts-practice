@@ -7,6 +7,7 @@ import { Navbar } from '../Navbar/Navbar'
 import { Filter } from '../Filter/Filter'
 import './Home.css'
 
+// ~~~ Displays all the onload elements ~~~
 export const Home: React.FC = () => {
 	const [allMovies, setAllMovies] = useState<MoviesState['movies']>([])
 	const [statusCode, setStatusCode] = useState<number>(200)
