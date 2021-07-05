@@ -18,6 +18,14 @@
 }
 
 .MoviePoster:hover {
-	box-shadow: 0 20px 20px 0 rgb(113, 200, 205, 0.5),
-		0 20px 20px 0 rgba(0, 0, 0, 0.5);
+	box-shadow: 0 23px 23px 0 rgb(113, 200, 205, 0.5),
+		0 23px 23px 0 rgba(0, 0, 0, 0.5);
+	transform: scale(1.01);
+	z-index: 1;
+}
+
+.MoviePoster a {
+	text-decoration: none;
+	text-align: center;
+	color: #86690f;
 }
