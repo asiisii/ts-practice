@@ -17,7 +17,7 @@ describe('Filter', () => {
 			.should('have.text', 'Action')
 	})
 
-	it.only('should be able to search by text', () => {
+	it('should be able to search by text', () => {
 		cy.get('input[name="search"]')
 			.should('have.value', '')
 			.type('Riders')
@@ -25,6 +25,23 @@ describe('Filter', () => {
 			.get('.movies')
 			.find('.MoviePoster')
 			.should('have.length', 1)
+			.should('be.visible')
+	})
+
+	it.only('should display all the movies when search has no value', () => {
+		cy.get('input[name="search"]')
+			.type('Riders')
+			.should('have.value', 'riders')
+			.get('.movies')
+			.find('.MoviePoster')
+			.should('have.length', 1)
+			.should('be.visible')
+			.get('input[name="search"]')
+			.clear()
+			.should('have.value', '')
+			.get('.movies')
+			.find('.MoviePoster')
+			.should('have.length', 10)
 			.should('be.visible')
 	})
 })
