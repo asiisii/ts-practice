@@ -1,0 +1,24 @@
+{
+	"data": {
+		"id": "SP013727990000",
+		"title": "Riders of Justice",
+		"releaseYear": 2020,
+		"duration": 6960,
+		"moods": [],
+		"releaseDate": "2019-12-31",
+		"genres": ["Action", "Thriller", "Dark comedy"],
+		"description": "Markus returns home to care for his daughter when his wife dies in a tragic train accident. However, when a survivor of the wreck surfaces and claims foul play, Markus suspects his wife was murdered and embarks on a mission to find those responsible.",
+		"topCast": [
+			{ "name": "Mads Mikkelsen", "characterName": "Markus" },
+			{ "name": "Nikolaj Lie Kaas", "characterName": "Otto" },
+			{ "name": "Andrea Heick Gadeberg", "characterName": "Mathilde" },
+			{ "name": "Lars Brygmann", "characterName": "Lennart" },
+			{ "name": "Nicolas Bro", "characterName": "Emmenthaler" },
+			{ "name": "Gustav Lindh", "characterName": "Bodashka" },
+			{ "name": "Roland Møller", "characterName": "Kurt" },
+			{ "name": "Morten Suurballe", "characterName": "Gert" },
+			{ "name": "Jacob Lohmann", "characterName": "Kenneth Pigvaren" },
+			{ "name": "Albert Rudbeck Lindhardt", "characterName": "Sirius" }
+		]
+	}
+}
