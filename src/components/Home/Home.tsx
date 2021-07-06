@@ -24,22 +24,20 @@ export const Home: React.FC = () => {
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
 	useEffect(() => {
+		const getAllMovies = async () => {
+			setFetchedError(false)
+			try {
+				const response = await fetchMovieData('/')
+				setStatusCode(response.status)
+				const data = await response.json()
+				const cleanedData = cleanAllMoviesData(data.data)
+				setAllMovies(cleanedData)
+			} catch (error) {
+				setFetchedError(true)
+			}
+		}
 		getAllMovies()
 	}, [])
-
-	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
-	const getAllMovies = async () => {
-		setFetchedError(false)
-		try {
-			const response = await fetchMovieData('/')
-			setStatusCode(response.status)
-			const data = await response.json()
-			const cleanedData = cleanAllMoviesData(data.data)
-			setAllMovies(cleanedData)
-		} catch (error) {
-			setFetchedError(true)
-		}
-	}
 
 	// ~~~ filters the movie data by searched query & assigns data to states ~~~
 	const filterMovies = (query: string) => {
