@@ -106,4 +106,15 @@ describe('Error handling', () => {
 				.should('have.text', 'No movies found.')
 		})
   })
+
+  describe('Invalid URL', () => {
+		it('should failed to load page for invalid url', () => {
+			cy.visit('http://localhost:3000/asdf')
+				.get('h1')
+				.should('have.text','Oops! Request failed. Please try again.')
+        cy.visit('http://localhost:3000/SP015622350000asdf')
+					.get('h1')
+					.should('have.text', 'Oops! Request failed. Please try again.')
+		})
+	})
 })
