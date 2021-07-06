@@ -87,12 +87,23 @@ describe('Error handling', () => {
 	})
 
   describe('Filter movie error', () => {
-    it.only('should say no movies found if search doesn\'t match', () => {
+    it('should say no movies found if search doesn\'t match', () => {
       cy.interceptAllMoviesFetches()
 				.get('input[name="search"]')
 				.type('asd')
 				.should('have.value', 'asd')
 				.get('.err-msg').should('have.text', 'No movies found.')
     })
+
+    it("should say no movies found if filtered genre doesn't match", () => {
+			cy.interceptAllMoviesFetches()
+				.get('input[name="search"]')
+				.type('riders')
+				.should('have.value', 'riders')
+				.get('select')
+				.select('Comedy drama')
+				.get('.err-msg')
+				.should('have.text', 'No movies found.')
+		})
   })
 })
