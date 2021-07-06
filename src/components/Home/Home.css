@@ -1,7 +1,7 @@
 select {
-	padding: 15px;
+	padding: 15px 2px 15px 2px;
 	width: 200px;
-  cursor: pointer;
+	cursor: pointer;
 	border-radius: 40px;
 	align-items: center;
 	margin-bottom: 10px;
@@ -9,7 +9,7 @@ select {
 }
 
 .movies {
-  width: 100%;
+	width: 100%;
 	height: 100vh;
 	margin: 0 auto;
 	max-width: 1390px;
@@ -24,4 +24,8 @@ select {
 h1 {
 	cursor: default;
 	color: #5c480a;
+}
+
+.num-of-posters {
+	padding-left: 10px;
 }
