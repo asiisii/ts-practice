@@ -72,7 +72,6 @@ const formateSecsToTime = (seconds: number) => {
 
 // ~~~ Converts top cast array to string format
 const formateTopCast = (chars: Chars) => {
-	console.log(chars)
 	const names = chars.map(char => char.name)
 	return names.join(' | ')
 }
