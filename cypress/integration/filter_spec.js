@@ -90,7 +90,7 @@ describe('Filter', () => {
 	it('should display no movies found if no match found', () => {
 		cy.get('input[name="search"]')
 			.type('asd')
-			.get('h2')
+			.get('.err-msg')
 			.should('have.text', 'No movies found.')
 	})
 
@@ -102,7 +102,7 @@ describe('Filter', () => {
 			.type('the')
 			.get('h1')
 			.eq(0)
-			.should('have.text', 'Search Results')
+			.should('have.text', 'Search Results: [ 4 ]')
 			.get('input[name="search"]')
 			.clear()
 			.get('h1')

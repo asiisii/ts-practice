@@ -20,6 +20,13 @@ export interface AMovieApiData {
 	}[]
 }
 
+
+export interface FilterProps {
+	searchText: string
+	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+	generateGenresOptions: () => JSX.Element
+}
+
 export interface AMovieState {
 	id: string
 	title: string

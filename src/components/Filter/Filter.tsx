@@ -1,11 +1,6 @@
 import React from 'react'
+import { FilterProps } from '../../util/dataTypes'
 import './Filter.css'
-
-interface FilterProps {
-	searchText: string
-	handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-	generateGenresOptions: () => JSX.Element
-}
 
 // ~~~ Displays genres option list and controlled search form ~~~
 export const Filter: React.FC<FilterProps> = ({

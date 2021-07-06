@@ -12,15 +12,15 @@ export const Home: React.FC = () => {
 	const [allMovies, setAllMovies] = useState<MoviesState['movies']>([])
 	const [statusCode, setStatusCode] = useState<number>(200)
 	const [fetchedError, setFetchedError] = useState<boolean>(false)
-	const [error, setError] = useState<string>('')
-	const [searchText, setSearchText] = useState('')
 	const [filteredBySearch, setFilteredBySearch] = useState<
 		MoviesState['movies']
 	>([])
-	const [genre, setGenre] = useState('')
 	const [filteredByGenres, setFilteredByGenres] = useState<
 		MoviesState['movies']
 	>([])
+	const [error, setError] = useState<string>('')
+	const [searchText, setSearchText] = useState('')
+	const [genre, setGenre] = useState('')
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
 	useEffect(() => {
@@ -43,6 +43,7 @@ export const Home: React.FC = () => {
 	const filterMovies = (query: string) => {
 		setError('')
 		selectMoviesData()
+
 		let filteredResults: MoviesState['movies'] = []
 
 		if (query) {
@@ -170,12 +171,15 @@ export const Home: React.FC = () => {
 		}
 	}
 
+  // ~~~ Tracks the search text ~~~
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		e.preventDefault()
 		let query = e.target.value.toLowerCase()
 		setSearchText(query)
 		filterMovies(query)
 	}
+
+	const countMoviePosters = () => selectMoviesData().length
 
 	return (
 		<main>
@@ -186,18 +190,14 @@ export const Home: React.FC = () => {
 				generateGenresOptions={generateGenresOptions}
 			/>
 			<section className='movies'>
-				<h1>
-					{filteredBySearch.length ||
-					filteredByGenres.length ||
-					error === 'No movies found.'
-						? 'Search Results'
+				<h1 className='num-of-posters'>
+					{filteredBySearch.length || filteredByGenres.length || error
+						? `Search Results: [ ${countMoviePosters()} ]`
 						: 'All Movies'}
 				</h1>
-				<h2>
-					{error === 'No movies found.' ? (
-						<h1 className='err-msg'>{error}</h1>
-					) : null}
-				</h2>
+				{error === 'No movies found.' ? (
+					<h1 className='err-msg'>{error}</h1>
+				) : null}
 				{!fetchedError && !error && !allMovies.length && (
 					<h1 className='loading'>Loading</h1>
 				)}
