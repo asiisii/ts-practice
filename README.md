@@ -1,46 +1,109 @@
-# Getting Started with Create React App
+# ChartFlix
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img 
+  src="./src/util/assets/responsive.png" 
+  alt="app display in different devices"
+/>
 
-## Available Scripts
+### Table of Contents
 
-In the project directory, you can run:
+- [ChartFlix](#chartflix)
+    - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+    - [GitHub Repo LINK](#github-repo-link)
+    - [Deployed LINK](#deployed-link)
+  - [Features](#features)
+  - [Technologies Used](#technologies-used)
+  - [Setup Instructions](#setup-instructions)
+      - [To run the app](#to-run-the-app)
+      - [To run the Cypress test](#to-run-the-cypress-test)
+  - [Credits](#credits)
+      - [Author](#author)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+<table>
+  <td>
+    <img src="./src/util/assets/accessibility.png" alt="accessibility score"
+      width="110" height="130" />
+  </td>
+  <td>
+    <img src="./src/util/assets/best-practices.png" alt="best practices score"
+      width="110" height="130" />
+  </td>
+  <td>
+    <img src="./src/util/assets/seo.png" alt="SEO score"
+      width="110" height="130" />
+  </td>
+  <td>
+    <img src="./src/util/assets/performance.png" alt="performance score"
+      width="110" height="130" />
+  </td>
+</table>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+App that allows users to search/filter movies either by movie title or genre using the provided movie API by Charter/Spectrum.
 
-### `npm test`
+### GitHub Repo [LINK](https://github.com/asiisii/chartflix)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Deployed [LINK](https://chartflix.netlify.app/)
 
-### `npm run build`
+## Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Fully responsive application with accessibility score of 100 (tested via lighthouse). In homepage user will be able to view 35 movie posters with their title. User is able to filter movies by genre using the select options(default option: All). user is also able to search for a movie by title. User can view more movie details by clicking on a specific movie poster.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![overview](./src/util/assets/overview.gif)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**[Back to top](#table-of-contents)**
 
-### `npm run eject`
+## Technologies Used
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Charter/Spectrum movie API
+- TypeScript
+- React
+- TravisCI
+- Cypress
+- Router
+- JavaScript
+- HTML
+- CSS
+- ESLint
+- Netlify
+- GitHub
+- Miro
+- React dev tools
+- Google dev tools
+- Font awesome (search icon)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Setup Instructions
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Clone this [repository](https://github.com/asiisii/chartflix)
+2. `cd` into the repository in your terminal
+3. `npm i` to install required dependencies
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Then:-
 
-## Learn More
+#### To run the app
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- `npm start` in your terminal to view it on your browser
+- If browser doesn't open automatically, open the browser and navigate to `http://localhost:3000`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### To run the Cypress test
+
+- `npm run Cypress` in your terminal to run the Cypress test (make sure the app is still running on `http://localhost:3000`)
+- Then click on `_spec.js` files to run each test
+
+## Credits
+
+#### Author
+
+<table>
+  <tr>
+    <td> Ashish Malla <a href="https://github.com/asiisii">GH</td>
+  </tr>
+  <td>
+    <img src="https://avatars.githubusercontent.com/u/36644181?v=4" alt="Asiisii's GH img"
+  width="100" height="auto" />
+  </td>  
+</table>
+
+**[Back to top](#table-of-contents)**
