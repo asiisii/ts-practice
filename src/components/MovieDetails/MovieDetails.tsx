@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { fetchMovieData, checkForError } from '../../util/apiCalls'
-import { cleanAMovieData } from '../../util/cleanApiData'
 import { AMovieState, MovieDetailsProps } from '../../util/dataTypes'
+import { cleanAMovieData } from '../../util/cleanApiData'
 import backbtn from '../../util/assets/back-button.png'
-import './MovieDetails.css'
 import { Navbar } from '../Navbar/Navbar'
+import './MovieDetails.css'
+
 // ~~~ Displays the movie details ~~~
 export const MovieDetails: React.FC = () => {
 	const params = useParams<MovieDetailsProps>()
@@ -33,7 +34,7 @@ export const MovieDetails: React.FC = () => {
 
 	return (
 		<main className='MovieDetails'>
-      <Navbar/>
+			<Navbar />
 			<Link to='/'>
 				<img src={backbtn} alt='back-button' className='back-btn' />
 			</Link>
@@ -76,34 +77,3 @@ export const MovieDetails: React.FC = () => {
 		</main>
 	)
 }
-
-// ;<main className='movie-detail'>
-// 	<section className='movie-card__details'>
-// 		<div className='movie-info'>
-// 			<img src={poster} className='movie-card__details__poster' alt={title} />
-// 			<h2 className='movie-card__details__title'>{title}</h2>
-// 			<h3 className='movie-card__details__date'>{releaseDate}</h3>
-// 			<div
-// 				className='movie-card__details__rating fa fa-star'
-// 				style={ratingStyle}
-// 			/>
-// 			<br />
-// 			<p className='movie-card__details__tagline'>{tagline}</p>
-// 			<p className='movie-card__details__run-time'>{runtime} min</p>
-// 			<p className='movie-card__details__genre'>{genres}</p>
-// 			<p className='movie-card__details__overview'>{overview}</p>
-// 			{trailerKey && (
-// 				<button
-// 					className='movie-card__details__btn'
-// 					onClick={this.toggleTrailer}
-// 				>
-// 					<BsPlayFill className='icon' />
-// 					Watch Trailer
-// 				</button>
-// 			)}
-// 		</div>
-// 	</section>
-// 	<div className='movie-backdrop'>
-// 		<img className='movie-backdrop__image' src={backdrop} alt={title} />
-// 	</div>
-// </main>
