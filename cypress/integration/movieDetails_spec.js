@@ -21,7 +21,8 @@ describe('MoviePosters', () => {
 	})
 
 	it('should be able to see both poster and hero images', () => {
-    cy.get('img')
+    cy.get('.details-section')
+      .get('img')
 			.eq(2)
 			.should('have.attr', 'src')
 			.should('equal', '/assets/moviePosterImages/SP013727990000.jpeg')
