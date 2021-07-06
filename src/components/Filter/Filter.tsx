@@ -26,6 +26,7 @@ export const Filter: React.FC<FilterProps> = ({
 					onChange={e => handleChange(e)}
 				/>
 			</div>
+
 			{generateGenresOptions()}
 		</section>
 	)
