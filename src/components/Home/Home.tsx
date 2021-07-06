@@ -190,7 +190,7 @@ export const Home: React.FC = () => {
 				generateGenresOptions={generateGenresOptions}
 			/>
 			<section className='movies'>
-				<h1>
+				<h1 className='num-of-posters'>
 					{filteredBySearch.length || filteredByGenres.length || error
 						? `Search Results: [ ${countMoviePosters()} ]`
 						: 'All Movies'}
