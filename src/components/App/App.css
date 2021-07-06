@@ -14,10 +14,6 @@ body {
 /* ------------- responsiveness -------------------- */
 
 @media only screen and (max-width: 1050px) {
-	/* .MoviePoster img {
-		height: 325px;
-	} */
-
 	div.Movies {
 		padding: 10px;
 		grid-template-columns: repeat(3, 1fr);
@@ -103,6 +99,7 @@ body {
 	h1.movie-title {
 		font-size: 20px;
 	}
+
 	.release-year,
 	.duration,
 	.genres {
@@ -132,10 +129,12 @@ body {
 	h1.movie-title {
 		font-size: 17px;
 	}
+
 	.release-year,
 	.duration,
 	.genres,
-	.description, .top-cast {
+	.description,
+	.top-cast {
 		font-size: 14px;
 	}
 
