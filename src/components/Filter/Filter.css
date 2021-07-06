@@ -1,13 +1,10 @@
 .Filter {
-	/* width: 100%; */
 	max-width: 1390px;
 	margin: 20px auto;
-	/* padding: 0 25px; */
 	height: 60px;
 	border-radius: 10px;
 	display: flex;
-	justify-content: space-around;
-	/* overflow: hidden; */
+	justify-content: space-evenly;
 }
 
 .input-container {
