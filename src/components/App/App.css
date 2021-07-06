@@ -3,3 +3,9 @@ body {
 	color: #fff;
 	background-color: #a6e3e9;
 }
+
+.loading,
+.err-msg {
+	text-align: center;
+	font-size: 2rem;
+}

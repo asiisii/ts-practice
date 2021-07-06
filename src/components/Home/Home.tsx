@@ -193,8 +193,17 @@ export const Home: React.FC = () => {
 						? 'Search Results'
 						: 'All Movies'}
 				</h1>
-				<h2>{error === 'No movies found.' ? error : null}</h2>
-				{fetchedError && checkForError(statusCode)}
+				<h2>
+					{error === 'No movies found.' ? (
+						<h1 className='err-msg'>{error}</h1>
+					) : null}
+				</h2>
+				{!fetchedError && !error && !allMovies.length && (
+					<h1 className='loading'>Loading</h1>
+				)}
+				{fetchedError && (
+					<h1 className='err-msg'>{checkForError(statusCode)}</h1>
+				)}
 				{(allMovies.length ||
 					filteredBySearch.length ||
 					filteredByGenres.length) &&
