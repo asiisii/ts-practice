@@ -15,22 +15,22 @@ export const MovieDetails: React.FC = () => {
 	const [fetchedError, setFetchedError] = useState<boolean>(false)
 
 	useEffect(() => {
+		// ~~~ Fetches the movie details data and assigns it to the state ~~~
+		const getSingleMovieDetails = async () => {
+			setFetchedError(false)
+			try {
+				const response = await fetchMovieData(`/${params.id}`)
+				setStatusCode(response.status)
+				const data = await response.json()
+				const cleanedData = cleanAMovieData(data.data)
+				setAMovie(cleanedData)
+			} catch (error) {
+				setFetchedError(true)
+			}
+		}
 		getSingleMovieDetails()
 	}, [params.id])
 
-	// ~~~ Fetches the movie details data and assigns it to the state ~~~
-	const getSingleMovieDetails = async () => {
-		setFetchedError(false)
-		try {
-			const response = await fetchMovieData(`/${params.id}`)
-			setStatusCode(response.status)
-			const data = await response.json()
-			const cleanedData = cleanAMovieData(data.data)
-			setAMovie(cleanedData)
-		} catch (error) {
-			setFetchedError(true)
-		}
-	}
 
 	return (
 		<main className='MovieDetails'>
