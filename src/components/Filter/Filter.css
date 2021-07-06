@@ -11,25 +11,24 @@
 }
 
 .input-container {
-	/* flex-grow: 1; */
-	width: 600px;
+  width: 600px;
 	display: flex;
 	align-items: center;
-	background-color: #d0e8e9;
 	border-radius: 40px;
 	margin-bottom: 10px;
+	background-color: #d0e8e9;
 }
 
 .input-container input {
-	background-color: transparent;
-	border-top: none;
-	border-right: none;
-	border-left: none;
+  width: 400px;
 	outline: none;
-	color: #5c480a;
 	font-size: 20px;
+	color: #5c480a;
 	margin-left: 20px;
-	width: 400px;
+  border-top: none;
+	border-left: none;
+	border-right: none;
+	background-color: transparent;
 	transition: width 0.2s ease-in-out;
 }
 

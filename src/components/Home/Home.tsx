@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { MoviesState } from '../../util/dataTypes'
-import { fetchAllMoviesData, checkForError } from '../../util/apiCalls'
+import { fetchMovieData, checkForError } from '../../util/apiCalls'
 import { cleanAllMoviesData } from '../../util/cleanApiData'
 import { Movies } from '../Movies/Movies'
 import { Navbar } from '../Navbar/Navbar'
@@ -24,22 +24,20 @@ export const Home: React.FC = () => {
 
 	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
 	useEffect(() => {
+		const getAllMovies = async () => {
+			setFetchedError(false)
+			try {
+				const response = await fetchMovieData('/')
+				setStatusCode(response.status)
+				const data = await response.json()
+				const cleanedData = cleanAllMoviesData(data.data)
+				setAllMovies(cleanedData)
+			} catch (error) {
+				setFetchedError(true)
+			}
+		}
 		getAllMovies()
 	}, [])
-
-	// ~~~ Invokes the fetch call on load & assigns data to states ~~~
-	const getAllMovies = async () => {
-		setFetchedError(false)
-		try {
-			const response = await fetchAllMoviesData()
-			setStatusCode(response.status)
-			const data = await response.json()
-			const cleanedData = cleanAllMoviesData(data)
-			setAllMovies(cleanedData)
-		} catch (error) {
-			setFetchedError(true)
-		}
-	}
 
 	// ~~~ filters the movie data by searched query & assigns data to states ~~~
 	const filterMovies = (query: string) => {
@@ -93,22 +91,21 @@ export const Home: React.FC = () => {
 		)
 		genresList.unshift(`All`)
 		return (
-			<select
-				className='options'
-				defaultValue=''
-				onChange={e => handleGenresOptionChange(e)}
-			>
-				<option value='' disabled>
-					Select Genre
-				</option>
-				{genresList.map((genre, i) => {
-					return (
-						<option className='select-items' key={i} value={genre}>
-							{genre}
-						</option>
-					)
-				})}
-			</select>
+			<section className='genre-select'>
+				<select
+					className='options'
+					defaultValue=''
+					onChange={e => handleGenresOptionChange(e)}
+				>
+					{genresList.map((genre, i) => {
+						return (
+							<option className='select-items' key={i} value={genre}>
+								{genre}
+							</option>
+						)
+					})}
+				</select>
+			</section>
 		)
 	}
 
@@ -116,6 +113,11 @@ export const Home: React.FC = () => {
 	const filterByGenres = (type: string) => {
 		let filteredResults: MoviesState['movies'] = []
 		setError('')
+		if (searchText && type === 'All') {
+			filteredResults = allMovies.filter(movie =>
+				movie.title.includes(searchText)
+			)
+		}
 		if (!searchText && type === 'All') {
 			filteredResults = allMovies
 		}

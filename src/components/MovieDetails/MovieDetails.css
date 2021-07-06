@@ -1,0 +1,98 @@
+.left,
+.info,
+.top,
+.details-section {
+	display: flex;
+}
+
+.bottom h3,
+.movie-title,
+.release-year,
+.duration,
+.genres,
+.description,
+.top-cast {
+	cursor: default;
+}
+
+.details-section {
+	width: 90%;
+	margin: 0 auto;
+	border-radius: 10px;
+	backdrop-filter: blur(4px);
+	background: rgba(167, 225, 233, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 114, 135, 0.8);
+	-webkit-backdrop-filter: blur(4px);
+	border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.back-btn {
+	width: 50px;
+	margin: 1% 5% 0;
+}
+
+.left {
+	width: 85%;
+	z-index: 2;
+	background: linear-gradient(
+		to left,
+		rgb(44, 110, 105) 15%,
+		rgba(56, 167, 148, 0.178)
+	);
+}
+
+.poster-img-wrapper img {
+	height: 250px;
+	margin-right: 15px;
+}
+
+.info,
+.left {
+	flex-direction: column;
+}
+
+.movie-title {
+	font-size: 30px;
+}
+
+.release-year {
+	font-size: 20px;
+}
+
+.duration {
+	width: 100px;
+	padding: 5px;
+	font-size: 18px;
+	border-left: 2px solid gray;
+	border-right: 2px solid gray;
+}
+
+.top {
+	margin: 15px 15px 0;
+}
+
+.bottom {
+	margin: 0 15px 15px;
+}
+
+.description {
+	font-size: 17px;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+.right {
+	background: linear-gradient(
+		to right,
+		rgb(44, 110, 105) 1%,
+		rgba(6, 88, 75, 0.178)
+	);
+}
+
+.poster {
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	border-radius: 10px;
+}
