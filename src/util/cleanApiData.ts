@@ -64,14 +64,10 @@ export const cleanAMovieData = (aMovieData: AMovieApiData) => {
 const formateSecsToTime = (seconds: number) => {
 	const hr = Math.floor(seconds / 3600)
 	const min = Math.floor((seconds % 3600) / 60)
-	const sec = Math.floor((seconds % 3600) % 60)
-
 	const formattedHr = hr > 0 ? hr + (hr === 1 ? 'hr' : 'hrs') : ''
 	const formattedMin = min > 0 ? ':' + min + (min === 1 ? 'min' : 'mins') : ''
-	const formattedSec =
-		(sec > 0 ? ':' + sec + (sec === 1 ? 'sec' : 'secs') : '') || (sec < 1 && '')
 
-	return `${formattedHr}${formattedMin}${formattedSec}`
+	return `${formattedHr}${formattedMin}`
 }
 
 // ~~~ Converts top cast array to string format
