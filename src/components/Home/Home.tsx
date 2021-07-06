@@ -94,7 +94,6 @@ export const Home: React.FC = () => {
 		genresList.unshift(`All`)
 		return (
 			<section className='genre-select'>
-				<p>Browse by Genre</p>
 				<select
 					className='options'
 					defaultValue=''
