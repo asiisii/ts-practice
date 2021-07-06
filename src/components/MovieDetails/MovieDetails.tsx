@@ -31,19 +31,18 @@ export const MovieDetails: React.FC = () => {
 		getSingleMovieDetails()
 	}, [params.id])
 
-
 	return (
 		<main className='MovieDetails'>
 			<Navbar />
 			<Link to='/'>
 				<img src={backbtn} alt='back-button' className='back-btn' />
 			</Link>
-			{fetchedError && <h1>{checkForError(statusCode)}</h1>}
-			{!aMovie && !fetchedError && <h1>Loading</h1>}
+			{fetchedError && <h1 className='err-msg'>{checkForError(statusCode)}</h1>}
+			{!aMovie && !fetchedError && <h1 className='loading'>Loading</h1>}
 			{aMovie && (
 				<div className='details-section'>
 					<article className='left'>
-						<div className='top'>
+						<section className='top'>
 							<div className='poster-img-wrapper'>
 								<img
 									src={aMovie.posterPath}
@@ -57,21 +56,21 @@ export const MovieDetails: React.FC = () => {
 								<h3 className='genres'>{aMovie.genres}</h3>
 								<br />
 							</div>
-						</div>
-						<div className='bottom'>
+						</section>
+						<section className='bottom'>
 							<h3>Description</h3>
 							<p className='description'>{aMovie.description}</p>
 							<h3>Top Cast</h3>
 							<p className='top-cast'>{aMovie.topCast}</p>
-						</div>
+						</section>
 					</article>
-					<div className='right'>
+					<article className='right'>
 						<img
 							className='poster'
 							src={aMovie.heroPath}
 							alt={`${aMovie.title} hero img`}
 						/>
-					</div>
+					</article>
 				</div>
 			)}
 		</main>
