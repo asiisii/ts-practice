@@ -1,17 +1,17 @@
 .Filter {
-	width: 100%;
-	max-width: 1440px;
+	/* width: 100%; */
+	max-width: 1390px;
 	margin: 20px auto;
-	padding: 0 25px;
+	/* padding: 0 25px; */
 	height: 60px;
 	border-radius: 10px;
 	display: flex;
 	justify-content: space-around;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 .input-container {
-  width: 600px;
+	width: 600px;
 	display: flex;
 	align-items: center;
 	border-radius: 40px;
@@ -20,12 +20,12 @@
 }
 
 .input-container input {
-  width: 400px;
+	width: 400px;
 	outline: none;
 	font-size: 20px;
 	color: #5c480a;
 	margin-left: 20px;
-  border-top: none;
+	border-top: none;
 	border-left: none;
 	border-right: none;
 	background-color: transparent;
