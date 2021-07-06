@@ -17,7 +17,7 @@ describe('Error handling', () => {
     .get('.err-msg').should('have.text', 'Sorry, we couldn\'t find movies you were looking for')
   })
 
-  it('should display error message for 404 status code', () => {
+  it('should display error message for 429 status code', () => {
 		const baseURL = 'https://code-challenge.spectrumtoolbox.com/api/movies'
 		cy.intercept(
 			{
@@ -39,7 +39,7 @@ describe('Error handling', () => {
 			)
 	})
 
-  it('should display error message for 404 status code', () => {
+  it('should display error message for 500 status code', () => {
 		const baseURL = 'https://code-challenge.spectrumtoolbox.com/api/movies'
 		cy.intercept(
 			{
@@ -59,5 +59,24 @@ describe('Error handling', () => {
 				'have.text',
 				'Internal Server Error. Our whole team are now aware.'
 			)
+	})
+
+  it('should display error message for any other error status code', () => {
+		const baseURL = 'https://code-challenge.spectrumtoolbox.com/api/movies'
+		cy.intercept(
+			{
+				method: 'GET',
+				url: `${baseURL}`,
+				headers: {
+					Authorization: 'Api-Key q3MNxtfep8Gt',
+				},
+			},
+			{
+				statusCode: 401,
+			}
+		)
+			.visit('http://localhost:3000/')
+			.get('.err-msg')
+			.should('have.text', 'Oops! Request failed. Please try again.')
 	})
 })
