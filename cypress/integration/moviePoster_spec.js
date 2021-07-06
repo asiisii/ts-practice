@@ -47,5 +47,16 @@ describe('MoviePosters', () => {
 				.eq(1)
 				.should('have.text', '616 Wilford Lane')
 		})
+
+		it("should display correct #'s of search results", () => {
+			cy.get('input[name="search"]')
+				.type('Riders')
+				.get('.num-of-posters')
+				.should('have.text', 'Search Results: [ 1 ]')
+				.get('input[name="search"]')
+				.type('q')
+				.get('.num-of-posters')
+				.should('have.text', 'Search Results: [ 0 ]')
+		})
 	})
 })
