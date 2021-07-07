@@ -3,14 +3,11 @@ let errorMsg: string
 
 // ~~~ Returns response after fetching movie data ~~~
 export const fetchMovieData = async (query: string) => {
-	// const res = await fetch('/allMovies.json', {
 	const res = await fetch(`${path}${query}`, {
-		// const res = await fetch(path, {
 		headers: {
 			Authorization: 'Api-Key q3MNxtfep8Gt',
 		},
 	})
-	// console.log(res.body);
 
 	return res
 }
