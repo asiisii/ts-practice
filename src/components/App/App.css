@@ -79,6 +79,13 @@ body {
 	.input-container input:focus {
 		width: 61%;
 	}
+
+	.genre-select {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		margin-top: 20px;
+	}
 }
 
 @media only screen and (max-width: 555px) {
@@ -118,10 +125,6 @@ body {
 
 	.Filter {
 		align-items: start;
-	}
-
-	.genre-select {
-		align-items: inherit;
 	}
 }
 
